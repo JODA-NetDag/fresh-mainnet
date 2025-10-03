@@ -3,28 +3,21 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
 
 const links = [
   { href: "/", label: "Home" },
   { href: "/vision", label: "Vision" },
   { href: "/dvpn", label: "dVPN" },
   { href: "/faq", label: "FAQ" },
-  { href: "/whitepaper", label: "Whitepaper" }, // page (not PDF)
+  { href: "/whitepaper", label: "Whitepaper" },
 ];
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
-  const pathname = usePathname();
-
-  const linkClass = (href: string) =>
-    `text-sm transition ${
-      pathname === href ? "text-gray-900 font-semibold" : "text-gray-700 hover:text-gray-900"
-    }`;
 
   return (
-    <header className="sticky top-0 z-50 border-b bg-white/80 backdrop-blur">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
+    <header className="sticky top-0 z-50 bg-sky-50/90 backdrop-blur border-b border-blue-100">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 h-16">
         {/* Brand */}
         <Link href="/" className="flex items-center gap-2">
           <Image
@@ -33,63 +26,69 @@ export default function Navbar() {
             width={28}
             height={28}
             priority
+            className="rounded-full"
           />
-          <span className="text-base font-semibold">NetDag</span>
+          <span className="text-[17px] font-semibold tracking-tight text-slate-900">
+            NetDag
+          </span>
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden items-center gap-6 md:flex">
+        <nav className="hidden md:flex items-center gap-6">
           {links.map((l) => (
-            <Link key={l.href} href={l.href} className={linkClass(l.href)}>
+            <Link
+              key={l.href}
+              href={l.href}
+              className="text-slate-800 hover:text-slate-900 hover:underline underline-offset-4 decoration-blue-300"
+            >
               {l.label}
             </Link>
           ))}
           <Link
-            href="#get-started"
-            className="rounded-lg bg-blue-600 px-4 py-2 text-sm text-white hover:bg-blue-700"
+            href="/#get-started"
+            className="rounded-lg bg-blue-600 px-3 py-2 text-white hover:bg-blue-700 transition-colors"
           >
             Get started
           </Link>
         </nav>
 
-        {/* Mobile menu button */}
+        {/* Mobile button */}
         <button
-          className="inline-flex items-center justify-center rounded-md p-2 text-gray-700 hover:bg-gray-100 md:hidden"
+          aria-label="Menu"
           onClick={() => setOpen((v) => !v)}
-          aria-label="Toggle menu"
+          className="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-lg border border-blue-200 text-slate-800"
         >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" strokeWidth="2" />
-          </svg>
+          <span className="i-[menu]" />
+          {/* simple burger */}
+          <div className="space-y-1.5">
+            <span className="block h-0.5 w-5 bg-slate-800" />
+            <span className="block h-0.5 w-5 bg-slate-800" />
+            <span className="block h-0.5 w-5 bg-slate-800" />
+          </div>
         </button>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile drawer */}
       {open && (
-        <div className="border-t bg-white md:hidden">
-          <nav className="mx-auto max-w-6xl px-4 py-3">
-            <ul className="flex flex-col gap-3">
-              {links.map((l) => (
-                <li key={l.href}>
-                  <Link
-                    href={l.href}
-                    className={linkClass(l.href)}
-                    onClick={() => setOpen(false)}
-                  >
-                    {l.label}
-                  </Link>
-                </li>
-              ))}
-              <li>
-                <Link
-                  href="#get-started"
-                  className="inline-block rounded-lg bg-blue-600 px-4 py-2 text-sm text-white hover:bg-blue-700"
-                  onClick={() => setOpen(false)}
-                >
-                  Get started
-                </Link>
-              </li>
-            </ul>
+        <div className="md:hidden border-t border-blue-100 bg-sky-50/95">
+          <nav className="mx-auto max-w-6xl px-4 py-3 flex flex-col gap-3">
+            {links.map((l) => (
+              <Link
+                key={l.href}
+                href={l.href}
+                onClick={() => setOpen(false)}
+                className="text-slate-800 hover:text-slate-900"
+              >
+                {l.label}
+              </Link>
+            ))}
+            <Link
+              href="/#get-started"
+              onClick={() => setOpen(false)}
+              className="mt-1 rounded-lg bg-blue-600 px-3 py-2 text-white hover:bg-blue-700 transition-colors w-max"
+            >
+              Get started
+            </Link>
           </nav>
         </div>
       )}
