@@ -1,59 +1,57 @@
- @tailwind base;
- @tailwind components;
+@tailwind base;
+@tailwind components;
 @tailwind utilities;
 
-/* -------- Theme tokens -------- */
+/* Theme: slightly darker blue */
 :root {
-  /* Light theme */
-  --background: #f0f6ff;   /* light blue */
-  --foreground: #171717;   /* near-black text */
-  --card: #ffffff;         /* surfaces */
-  --muted: #6b7280;        /* secondary text */
-  --ring: #dbeafe;         /* focus ring (light blue) */
+  /* light mode */
+  --background: #e8f0ff;   /* was #f0f6ff → a notch darker */
+  --foreground: #0f172a;   /* slate-900 */
+  --card: #ffffff;
+  --muted: #475569;        /* slate-600 */
+  --ring: #c7d2fe;         /* indigo-200 */
+  --brand: #2563eb;        /* blue-600 */
+  --brand-hover: #1d4ed8;  /* blue-700 */
+  --brand-weak: #eff6ff;   /* blue-50 */
 }
 
-/* Optional dark mode tokens (keeps site readable if user prefers dark) */
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0b1324; /* deep blue */
-    --foreground: #e5e7eb; /* off-white text */
-    --card: #0f172a;       /* surface */
+    --background: #0b1224;
+    --foreground: #e5e7eb;
+    --card: #0f172a;
     --muted: #94a3b8;
     --ring: #1e3a8a;
+    --brand: #3b82f6;
+    --brand-hover: #2563eb;
+    --brand-weak: #0b1224;
   }
 }
 
-/* -------- Base globals -------- */
-html, body { height: 100%; }
+ html, body { height: 100%; }
 
 body {
   background: var(--background);
-  color: var(--foreground);
-  font-feature-settings: "rlig" 1, "calt" 1;
+   color: var(--foreground);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Better default link styling */
-a { color: #1d4ed8; text-decoration: none; }
-a:hover { text-decoration: underline; }
+/* links */
+a { color: var(--brand); text-decoration: none; }
+a:hover { color: var(--brand-hover); text-decoration: underline; }
 
-/* -------- Helpful utility classes (using Tailwind @apply) -------- */
-.card {
-  @apply rounded-2xl border border-slate-200 bg-white/80 shadow-sm backdrop-blur px-6 py-5;
-}
-
+/* helpers for consistent look */
+.card { @apply rounded-2xl border border-slate-200 bg-white/85 backdrop-blur px-6 py-5 shadow-sm; }
 .btn-primary {
-  @apply inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-medium bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
-  --tw-ring-color: var(--ring);
+  @apply inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-medium text-white;
+  background: var(--brand);
 }
-
+.btn-primary:hover { background: var(--brand-hover); }
 .btn-outline {
-  @apply inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-medium border border-amber-400 text-amber-700 hover:bg-amber-50 focus:outline-none focus:ring-2 focus:ring-offset-2;
-  --tw-ring-color: var(--ring);
+  @apply inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-medium border;
+  border-color: #f59e0b; /* amber-500 */
+  color: #b45309;        /* amber-700 */
 }
-
-/* Tweak hr and small text */
-hr { @apply my-8 border-slate-200/70; }
-small { @apply text-sm text-slate-500; } 
+.btn-outline:hover { @apply bg-amber-50; }
+ hr { @apply my-8 border-slate-200/70; }
