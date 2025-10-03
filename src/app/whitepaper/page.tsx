@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -8,64 +9,39 @@ export default function WhitepaperPage() {
       <main className="mx-auto max-w-6xl px-4 py-12">
         <h1 className="text-3xl md:text-4xl font-semibold tracking-tight">Whitepaper</h1>
 
-        <p className="mt-4 text-slate-700">
-          This page summarizes the key sections of the NetDag whitepaper. The full text
-          will remain a living document and will be published here (not as a PDF) so it loads
-          quickly on mobile and stays inside our site shell.
+        <p className="mt-4 text-gray-700">
+          This is a living document. It formalizes NetDag’s core mechanics:
+          <b> Risk Management (DAG + Bonding Curve)</b> with a constant reserve of
+          <b> 25% of presale revenue</b>, token flows, governance, and the rollout
+          plan for AI Neuron Layer, dVPN, Cross-Chain Lending, Gaming &amp; Micropayments,
+          and Charity.
         </p>
 
-        <section className="mt-8 grid gap-6 md:grid-cols-2">
-          <article className="card">
-            <h2 className="text-lg font-semibold">Introduction</h2>
-            <p className="mt-2 text-slate-700">
-              NetDag is a lightweight crypto project for real users — starting with shopper rewards and
-              a simple, private peer-to-peer dVPN — designed for sustainable growth and strong risk
-              management.
-            </p>
-          </article>
+        <h2 className="mt-8 text-xl font-semibold">Contents (draft)</h2>
+        <ol className="mt-3 list-decimal pl-6 space-y-1 text-gray-700">
+          <li>Problem &amp; Philosophy</li>
+          <li>Token Design &amp; Supply</li>
+          <li>DAG + Bonding Curve Risk Model</li>
+          <li>Security Reserve &amp; Audits</li>
+          <li>Utility Modules (AI, dVPN, Lending, Gaming, Charity)</li>
+          <li>Roadmap &amp; Milestones</li>
+          <li>Governance &amp; Transparency</li>
+        </ol>
 
-          <article className="card">
-            <h2 className="text-lg font-semibold">Tokenomics</h2>
-            <ul className="mt-2 list-disc pl-5 text-slate-700">
-              <li><b>Total Supply:</b> 499,999,000 NDG</li>
-              <li><b>Security Reserve:</b> 25% of presale revenue locked as a constant reserve</li>
-              <li><b>Fair Distribution:</b> mechanisms designed to discourage pump-and-dump cycles</li>
-            </ul>
-          </article>
-
-          <article className="card">
-            <h2 className="text-lg font-semibold">Risk Model</h2>
-            <p className="mt-2 text-slate-700">
-              DAG + Bonding Curve act as a shock-absorber to reduce outsized volatility while
-              supporting sustainable growth.
-            </p>
-          </article>
-
-          <article className="card">
-            <h2 className="text-lg font-semibold">Utility Modules</h2>
-            <ul className="mt-2 list-disc pl-5 text-slate-700">
-              <li>AI Neuron Layer (agentic insights, trader psychology dampening)</li>
-              <li>Decentralized VPN (dVPN) — WireGuard nodes, on-chain settlement</li>
-              <li>Cross-Chain Lending</li>
-              <li>Gaming & Micropayments</li>
-              <li>Charity Fee (2%) — on-chain and publicly auditable</li>
-            </ul>
-          </article>
-
-          <article className="card">
-            <h2 className="text-lg font-semibold">Roadmap</h2>
-            <p className="mt-2 text-slate-700">
-              Ship MVP → invite users → measure → iterate; audits and open integrations as we grow.
-            </p>
-          </article>
-
-          <article className="card">
-            <h2 className="text-lg font-semibold">Governance</h2>
-            <p className="mt-2 text-slate-700">
-              Transparent releases, clear ToS, and staged decentralization toward a DAO.
-            </p>
-          </article>
-        </section>
+        <div className="mt-8 flex gap-3">
+          <Link
+            href="/"
+            className="rounded-lg bg-[#1E40B8] px-5 py-3 text-white hover:bg-[#17379c] transition"
+          >
+            Back to Home
+          </Link>
+          <Link
+            href="/vision"
+            className="rounded-lg border border-[#D4AF37] px-5 py-3 hover:bg-white/60 transition"
+          >
+            Our Vision
+          </Link>
+        </div>
       </main>
       <Footer />
     </>
