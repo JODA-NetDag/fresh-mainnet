@@ -1,63 +1,59 @@
-/* Tailwind layers */
-@tailwind base;
-@tailwind components;
+ @tailwind base;
+ @tailwind components;
 @tailwind utilities;
 
-/* ---------- Theme tokens ---------- */
+/* -------- Theme tokens -------- */
 :root {
-  /* Light, readable blue background + dark text */
-  --bg: #f0f7ff;          /* light blue */
-  --fg: #0f172a;          /* slate-900 */
-  --muted: #475569;       /* slate-600 for secondary text */
-  --ring: #93c5fd;        /* sky-300 focus ring */
+  /* Light theme */
+  --background: #f0f6ff;   /* light blue */
+  --foreground: #171717;   /* near-black text */
+  --card: #ffffff;         /* surfaces */
+  --muted: #6b7280;        /* secondary text */
+  --ring: #dbeafe;         /* focus ring (light blue) */
 }
 
-/* ---------- Base element styles ---------- */
-html, body {
-  height: 100%;
+/* Optional dark mode tokens (keeps site readable if user prefers dark) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0b1324; /* deep blue */
+    --foreground: #e5e7eb; /* off-white text */
+    --card: #0f172a;       /* surface */
+    --muted: #94a3b8;
+    --ring: #1e3a8a;
+  }
 }
+
+/* -------- Base globals -------- */
+html, body { height: 100%; }
 
 body {
-  background: var(--bg);
-  color: var(--fg);
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu,
-    Cantarell, "Noto Sans", "Helvetica Neue", Arial, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol";
-  line-height: 1.6;
+  background: var(--background);
+  color: var(--foreground);
+  font-feature-settings: "rlig" 1, "calt" 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Make images and media responsive by default */
-img, svg, video, canvas {
-  display: block;
-  max-width: 100%;
-  height: auto;
+/* Better default link styling */
+a { color: #1d4ed8; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* -------- Helpful utility classes (using Tailwind @apply) -------- */
+.card {
+  @apply rounded-2xl border border-slate-200 bg-white/80 shadow-sm backdrop-blur px-6 py-5;
 }
 
-/* Links: subtle by default, clearer on hover/focus */
-a {
-  color: inherit;
-  text-decoration: none;
-}
-a:hover {
-  text-decoration: underline;
-  text-underline-offset: 4px;
-  text-decoration-color: #93c5fd; /* sky-300 */
-}
-a:focus-visible {
-  outline: 2px solid var(--ring);
-  outline-offset: 2px;
-  border-radius: 6px;
+.btn-primary {
+  @apply inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-medium bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+  --tw-ring-color: var(--ring);
 }
 
-/* Useful utility tweaks */
-::selection {
-  background: #bfdbfe; /* sky-200 */
-  color: #0f172a;      /* slate-900 */
+.btn-outline {
+  @apply inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-medium border border-amber-400 text-amber-700 hover:bg-amber-50 focus:outline-none focus:ring-2 focus:ring-offset-2;
+  --tw-ring-color: var(--ring);
 }
 
-/* Ensure sections don’t touch edges on small screens */
-.container-page {
-  @apply mx-auto max-w-6xl px-4;
-}
+/* Tweak hr and small text */
+hr { @apply my-8 border-slate-200/70; }
+small { @apply text-sm text-slate-500; } 
