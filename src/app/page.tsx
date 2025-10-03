@@ -12,10 +12,9 @@ export default function Home() {
         <div className="w-full max-w-5xl px-4 md:px-6 py-10 md:py-14 space-y-16">
           {/* HERO */}
           <section id="top" className="text-center scroll-mt-28">
-            <h1 className="text-3xl md:text-5xl font-semibold tracking-tight text-gray-900">
-              NetDag — <span className="underline decoration-black/20">Simple crypto</span>,{" "}
-              <span className="underline decoration-black/20">real utility</span>.
-            </h1>
+            <h1 className="text-4xl md:text-6xl font-semibold tracking-tight">
+  NetDag — <span className="text-slate-900 dark:text-slate-100">Simple crypto, real utility.</span>
+</h1>
 
             <p className="mt-4 text-gray-700 md:text-lg">
               A lightweight token for real users — shopper rewards and a private peer-to-peer dVPN.
