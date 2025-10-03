@@ -13,7 +13,7 @@ export default function Home() {
           {/* HERO */}
           <section id="top" className="text-center scroll-mt-28">
             <h1 className="text-4xl md:text-6xl font-semibold tracking-tight">
-  NetDag — <span className="text-slate-900 dark:text-slate-100">Simple crypto, real utility.</span>
+  NetDAG — <span className="text-slate-900 dark:text-slate-100">Simple crypto, real utility.</span>
 </h1>
 
             <p className="mt-4 text-gray-700 md:text-lg">
