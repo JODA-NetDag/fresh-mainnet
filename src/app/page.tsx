@@ -9,8 +9,8 @@ export default function Home() {
     <>
       <Navbar />
 
-      {/* Page background + default text color */}
-      <main className="min-h-screen bg-[#F8FBFF] text-gray-900">
+      {/* NOTE: no bg-* here; it inherits the layout background */}
+      <main className="min-h-screen text-gray-900">
         {/* 1) Hero (your existing component) */}
         <section className="mx-auto max-w-6xl px-4 py-10 md:py-14">
           <Hero />
@@ -68,7 +68,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 3) Features grid (your existing component) */}
+        {/* 3) Features grid */}
         <section className="mx-auto max-w-6xl px-4 pb-12">
           <h2 className="mb-4 text-2xl font-semibold tracking-tight">
             Features & Innovation

@@ -1,6 +1,6 @@
 // src/app/layout.tsx
 import "./globals.css";
- import type { Metadata } from "next";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "NetDag — Simple crypto, real utility.",
@@ -18,10 +18,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      {/* Light blue site background; tweak bg-sky-50 to taste */}
-      <body className="min-h-screen bg-sky-50 text-gray-900 antialiased">
+      {/* Set the site-wide background ONCE here */}
+      <body className="min-h-screen bg-[#F8FBFF] text-gray-900 antialiased">
         {children}
       </body>
     </html>
   );
- }
+}
