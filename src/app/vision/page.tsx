@@ -1,40 +1,25 @@
-import Link from "next/link";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+ import Navbar from "@/components/Navbar";
+ import Footer from "@/components/Footer";
 
-export default function VisionPage() {
+export default function Vision() {
   return (
-    <>
+    <main className="min-h-screen bg-[#d0e2f7] flex flex-col">
       <Navbar />
-      <main className="mx-auto max-w-6xl px-4 py-12">
-        <h1 className="text-3xl md:text-4xl font-semibold tracking-tight">
-          Our Vision
-        </h1>
-
-        <p className="mt-4 text-gray-700">
-          NetDag aims to make crypto useful for everyday people: fast rewards
-          for shopping, and private, censorship-resistant access to the internet
-          via our decentralized VPN (dVPN). We’ll grow step-by-step: ship MVPs,
-          invite real users, measure, and improve — with sustainability (DAG +
-          bonding curve), practical utility, and open partner integrations.
-        </p>
-
-        <div className="mt-8 flex gap-3">
-          <Link
-            href="/whitepaper"
-            className="rounded-lg bg-[#1E40B8] px-5 py-3 text-white hover:bg-[#17379c] transition"
-          >
-            Read Whitepaper
-          </Link>
-          <Link
-            href="/"
-            className="rounded-lg border border-[#D4AF37] px-5 py-3 hover:bg-white/60 transition"
-          >
-            Back to Home
-          </Link>
+      <div className="flex-1 flex items-start justify-center">
+        <div className="max-w-4xl w-full px-6 py-12 text-center">
+          <h1 className="text-3xl md:text-4xl font-semibold text-gray-900">Our Vision</h1>
+          <p className="mt-4 text-lg text-gray-700">
+            NetDag aims to make crypto useful for everyday people: fast rewards for shopping, and
+            private, censorship-resistant access to the internet via our decentralized VPN (dVPN).
+          </p>
+          <p className="mt-4 text-gray-700">
+            We grow step by step: ship an MVP, invite real users, measure, then improve.
+            The project emphasizes sustainability (DAG + bonding curve mechanics),
+            practical utility, and open integrations for partners.
+          </p>
         </div>
-      </main>
+      </div>
       <Footer />
-    </>
+    </main>
   );
 }

@@ -1,60 +1,53 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-type QA = { q: string; a: string };
-const items: QA[] = [
+const items = [
   {
     q: "What is NetDag (NDG)?",
     a: "A lightweight crypto project focused on real utility: shopper rewards and a decentralized VPN (dVPN).",
   },
   {
-    q: "What problem does NDG solve?",
-    a: "Practical web3 access: fast rewards, private internet access, and simple rails for payments, on-chain services, and (future) tokenized real-world utilities.",
+    q: "What problem does it solve?",
+    a: "Useful payments and services: private internet access, cross-chain lending, and simple rewards that everyday users can actually use.",
   },
   {
-    q: "Why DAG + Bonding Curve?",
-    a: "They act like a ‘shock-absorber’: aiming to reduce outsized volatility and improve sustainability for the treasury and community.",
+    q: "Why mention DAG + Bonding Curve?",
+    a: "We combine DAG concepts with a bonding-curve reserve to act like a shock-absorber and discourage extreme volatility.",
   },
   {
     q: "Which chain?",
-    a: "We start on BNB Smart Chain for low fees and speed; testnet first, then audited mainnet.",
+    a: "BNB Smart Chain to start (low fees, fast). Testnet first, then audited mainnet.",
   },
   {
-    q: "How does the dVPN work?",
-    a: "Community WireGuard nodes provide bandwidth. Users pay per-GB in NDG; sessions are settled on-chain.",
+    q: "How does dVPN work?",
+    a: "Community WireGuard nodes provide bandwidth. Users pay per-GB in NDG; sessions are settled on-chain. No central logs.",
   },
   {
-    q: "AI Neuron Layer?",
-    a: "Agentic insights that learn market behavior and help guide safer actions; traders can also use it to reduce human psychology bias.",
-  },
-  {
-    q: "Cross-Chain Lending?",
-    a: "Imagine holding ETH elsewhere and seamlessly borrowing NDG for digital services — practical, lightweight liquidity.",
-  },
-  {
-    q: "Presale?",
-    a: "You’ll be prompted to connect your wallet when live. Stay tuned for dates and terms.",
+    q: "Cross-chain lending?",
+    a: "Lock value on one chain and borrow usable NDG on NetDag for digital services, commerce, or gaming.",
   },
 ];
 
-export default function FAQPage() {
+export default function FAQ() {
   return (
-    <>
+    <main className="min-h-screen bg-[#d0e2f7] flex flex-col">
       <Navbar />
-      <main className="mx-auto max-w-6xl px-4 py-12">
-        <h1 className="text-3xl md:text-4xl font-semibold tracking-tight">FAQ</h1>
-        <p className="mt-4 text-gray-700">We’ll keep adding answers here.</p>
+      <div className="flex-1 flex items-start justify-center">
+        <div className="max-w-4xl w-full px-6 py-12 text-center">
+          <h1 className="text-3xl md:text-4xl font-semibold text-gray-900">FAQ</h1>
+          <p className="mt-3 text-gray-700">We’ll keep adding answers here.</p>
 
-        <div className="mt-8 space-y-6">
-          {items.map((it, i) => (
-            <div key={i} className="rounded-xl border border-black/5 bg-white/60 p-5">
-              <h3 className="font-semibold">{it.q}</h3>
-              <p className="mt-2 text-gray-700">{it.a}</p>
-            </div>
-          ))}
+          <div className="mt-8 space-y-4 text-left">
+            {items.map(({ q, a }, i) => (
+              <div key={i} className="bg-white rounded-lg p-5 shadow-md">
+                <h3 className="font-semibold text-gray-900">{q}</h3>
+                <p className="mt-2 text-gray-700">{a}</p>
+              </div>
+            ))}
+          </div>
         </div>
-      </main>
+      </div>
       <Footer />
-    </>
+    </main>
   );
 }
