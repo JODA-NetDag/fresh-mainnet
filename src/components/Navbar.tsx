@@ -1,8 +1,8 @@
 ﻿"use client";
 
-import { useState } from "react";
-import Link from "next/link";
-import Image from "next/image";
+ import { useState } from "react";
+ import Image from "next/image";
+ import Link from "next/link";
 
 const links = [
   { href: "/", label: "Home" },
@@ -16,77 +16,51 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-sky-50/90 backdrop-blur border-b border-blue-100">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 h-16">
-        {/* Brand */}
+    <header className="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-white/70 bg-white/60 border-b border-slate-200">
+      <div className="mx-auto max-w-6xl px-4 h-16 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
-          <Image
-            src="/images/NetDagLogoBrown.png"
-            alt="NetDag"
-            width={28}
-            height={28}
-            priority
-            className="rounded-full"
-          />
-          <span className="text-[17px] font-semibold tracking-tight text-slate-900">
-            NetDag
-          </span>
+          <Image src="/images/NetDagLogoBrown.png" alt="NetDag" width={28} height={28} />
+          <span className="font-semibold tracking-tight">NetDag</span>
         </Link>
 
-        {/* Desktop nav */}
+        {/* desktop */}
         <nav className="hidden md:flex items-center gap-6">
           {links.map((l) => (
-            <Link
-              key={l.href}
-              href={l.href}
-              className="text-slate-800 hover:text-slate-900 hover:underline underline-offset-4 decoration-blue-300"
-            >
+            <Link key={l.href} href={l.href} className="text-sm hover:underline">
               {l.label}
             </Link>
           ))}
-          <Link
-            href="/#get-started"
-            className="rounded-lg bg-blue-600 px-3 py-2 text-white hover:bg-blue-700 transition-colors"
-          >
-            Get started
-          </Link>
+          <Link href="/get-started" className="btn-primary">Get started</Link>
         </nav>
 
-        {/* Mobile button */}
+        {/* hamburger */}
         <button
           aria-label="Menu"
           onClick={() => setOpen((v) => !v)}
-          className="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-lg border border-blue-200 text-slate-800"
+          className="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg hover:bg-[var(--brand-weak)]"
         >
-          <span className="i-[menu]" />
-          {/* simple burger */}
-          <div className="space-y-1.5">
-            <span className="block h-0.5 w-5 bg-slate-800" />
-            <span className="block h-0.5 w-5 bg-slate-800" />
-            <span className="block h-0.5 w-5 bg-slate-800" />
-          </div>
+          <span className="sr-only">Open menu</span>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+          </svg>
         </button>
       </div>
 
-      {/* Mobile drawer */}
+      {/* mobile drawer */}
       {open && (
-        <div className="md:hidden border-t border-blue-100 bg-sky-50/95">
+        <div className="md:hidden border-t border-slate-200 bg-white/90 backdrop-blur">
           <nav className="mx-auto max-w-6xl px-4 py-3 flex flex-col gap-3">
             {links.map((l) => (
               <Link
                 key={l.href}
                 href={l.href}
                 onClick={() => setOpen(false)}
-                className="text-slate-800 hover:text-slate-900"
+                className="py-2"
               >
                 {l.label}
               </Link>
             ))}
-            <Link
-              href="/#get-started"
-              onClick={() => setOpen(false)}
-              className="mt-1 rounded-lg bg-blue-600 px-3 py-2 text-white hover:bg-blue-700 transition-colors w-max"
-            >
+            <Link href="/get-started" onClick={() => setOpen(false)} className="btn-primary w-full text-center">
               Get started
             </Link>
           </nav>
@@ -94,4 +68,4 @@ export default function Navbar() {
       )}
     </header>
   );
-}
+ }
