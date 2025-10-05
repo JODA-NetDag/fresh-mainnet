@@ -1,4 +1,4 @@
-// app/whitepaper/page.tsx
+// src/app/whitepaper/page.tsx
 import React from "react";
 
 export const metadata = {
@@ -15,15 +15,15 @@ export default function WhitepaperPage() {
         <h1 className="text-3xl md:text-4xl font-bold tracking-tight">
           NetDag (NDG) Whitepaper
         </h1>
-        <p className="mt-3 text-zinc-300">
+        <p className="mt-3 text-zinc-200">
           A decentralized framework for trust, stability, and real-world utility.
         </p>
       </header>
 
-      {/* TOC */}
-      <nav className="mb-10 rounded-2xl border border-zinc-800 bg-zinc-900/40 p-5">
-        <h2 className="mb-3 font-semibold text-zinc-200">Contents</h2>
-        <ol className="space-y-1 list-decimal list-inside text-zinc-300">
+      {/* TOC (now a light-grey card, no black border) */}
+      <nav className="mb-10 rounded-2xl bg-zinc-100 p-5 text-zinc-900 shadow-sm">
+        <h2 className="mb-3 font-semibold">Contents</h2>
+        <ol className="space-y-1 list-decimal list-inside">
           <li><a className="hover:underline" href="#problem">Problem &amp; Philosophy</a></li>
           <li><a className="hover:underline" href="#principles">Core Principles</a></li>
           <li><a className="hover:underline" href="#tokenomics">Tokenomics</a></li>
@@ -38,7 +38,7 @@ export default function WhitepaperPage() {
       {/* 1. Problem & Philosophy */}
       <section id="problem" className="scroll-mt-24">
         <h2 className="text-2xl font-semibold">1. Problem &amp; Philosophy</h2>
-        <p className="mt-3 text-zinc-300">
+        <p className="mt-3 text-zinc-200">
           The global digital economy has outpaced the financial infrastructure supporting it.
           Legacy systems remain expensive, exclusionary, and opaque, while existing crypto
           solutions struggle with volatility and fragmentation. NetDag was created to unify
@@ -54,7 +54,7 @@ export default function WhitepaperPage() {
       {/* 2. Core Principles */}
       <section id="principles" className="scroll-mt-24">
         <h2 className="text-2xl font-semibold">2. Core Principles</h2>
-        <div className="mt-4 space-y-5 text-zinc-300">
+        <div className="mt-4 space-y-5 text-zinc-200">
           <div>
             <h3 className="font-semibold">Trust, Scalability, and Real-World Utility</h3>
             <p>
@@ -101,7 +101,7 @@ export default function WhitepaperPage() {
       {/* 3. Tokenomics */}
       <section id="tokenomics" className="scroll-mt-24">
         <h2 className="text-2xl font-semibold">3. Tokenomics</h2>
-        <p className="mt-3 text-zinc-300">
+        <p className="mt-3 text-zinc-200">
           The maximum total supply is <span className="font-medium">499,999,000 NDG</span>,
           allocated to balance fairness, growth, and sustainability.
         </p>
@@ -125,14 +125,14 @@ export default function WhitepaperPage() {
         </div>
 
         <h3 className="mt-6 font-semibold">Emission Schedule</h3>
-        <p className="mt-2 text-zinc-300">
+        <p className="mt-2 text-zinc-200">
           Circulating supply increases by <span className="font-medium">10% every two weeks</span>
           over <span className="font-medium">14 cycles (~7 months)</span>. This controlled release
           maintains liquidity and reduces volatility, aligning token entry with organic demand.
         </p>
 
         <h3 className="mt-6 font-semibold">Investor Communication</h3>
-        <p className="mt-2 text-zinc-300">
+        <p className="mt-2 text-zinc-200">
           Follow our official website, app, and verified social channels for presale
           announcements, schedules, and rewards information.
         </p>
@@ -143,7 +143,7 @@ export default function WhitepaperPage() {
       {/* 4. Focus Areas */}
       <section id="focus" className="scroll-mt-24">
         <h2 className="text-2xl font-semibold">4. Focus Areas</h2>
-        <div className="mt-4 space-y-5 text-zinc-300">
+        <div className="mt-4 space-y-5 text-zinc-200">
           <Item
             title="Financial services & payment solutions"
             body="Fast, low-cost, borderless payments that connect crypto, fiat, and tokenized assets under a single liquidity model."
@@ -204,11 +204,11 @@ export default function WhitepaperPage() {
       {/* 6. Roadmap */}
       <section id="roadmap" className="scroll-mt-24">
         <h2 className="text-2xl font-semibold">6. Roadmap &amp; Milestones</h2>
-        <p className="mt-3 text-zinc-300">
+        <p className="mt-3 text-zinc-200">
           The project began with a mission to merge trust, utility, and scalability in a single
           decentralized framework. Early phases focused on foundation, prototyping, and community.
         </p>
-        <ul className="mt-4 space-y-2 text-zinc-300 list-disc list-inside">
+        <ul className="mt-4 space-y-2 text-zinc-200 list-disc list-inside">
           <li><span className="font-medium">Current:</span> Presale, awareness, and first dApp deployment.</li>
           <li><span className="font-medium">Q2:</span> dVPN rollout and AI Neuron Layer beta.</li>
           <li><span className="font-medium">Q3:</span> Cross-chain lending, staking, and first charity disbursements.</li>
@@ -222,7 +222,7 @@ export default function WhitepaperPage() {
       {/* 7. Governance */}
       <section id="governance" className="scroll-mt-24">
         <h2 className="text-2xl font-semibold">7. Governance &amp; Transparency</h2>
-        <p className="mt-3 text-zinc-300">
+        <p className="mt-3 text-zinc-200">
           NetDag uses transparent, on-chain governance. Holders can propose and vote on upgrades,
           treasury allocations, and integrations. All outcomes are immutably recorded, while multisig
           treasury controls prevent unilateral actions. Public dashboards keep the community informed.
@@ -234,7 +234,7 @@ export default function WhitepaperPage() {
       {/* 8. Charity */}
       <section id="charity" className="scroll-mt-24">
         <h2 className="text-2xl font-semibold">8. Charity &amp; Global Impact</h2>
-        <p className="mt-3 text-zinc-300">
+        <p className="mt-3 text-zinc-200">
           A portion of network activity funds verified charities and humanitarian causes. Donations
           are on-chain and traceable, aligning economic participation with measurable global impact.
         </p>
@@ -250,16 +250,18 @@ export default function WhitepaperPage() {
   );
 }
 
-/* --- tiny UI helpers (inline) --- */
+/* --- UI helpers (restyled) --- */
 function Divider() {
-  return <hr className="my-10 border-zinc-800" />;
+  // Removed the thin line: keep spacing only
+  return <div className="my-10" />;
 }
 
 function Card({ title, children }: { title: string; children: React.ReactNode }) {
+  // Light grey card, no black border
   return (
-    <div className="rounded-xl border border-zinc-800 bg-zinc-900/40 p-4">
-      <h4 className="font-semibold text-zinc-200">{title}</h4>
-      <p className="mt-2 text-zinc-300">{children}</p>
+    <div className="rounded-xl bg-zinc-100 p-4 text-zinc-900 shadow-sm">
+      <h4 className="font-semibold">{title}</h4>
+      <p className="mt-2">{children}</p>
     </div>
   );
 }
