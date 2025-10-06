@@ -4,11 +4,20 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
- export default function Navbar() {
+/**
+ * Navbar
+ * - Left: hamburger + logo + brand
+ * - Right (desktop): theme, language, Login/Register, Buy NDG, Whitepaper, Vision
+ * - Right (mobile): only Login/Register + Buy NDG; the rest live in the drawer
+ * - Whitepaper/ Vision use in-page anchors (/#whitepaper, /#vision)
+ * - Theme is persisted in localStorage and toggles the <html>.dark class
+ */
+
+export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [theme, setTheme] = useState<"light" | "dark">("light");
 
-  // load + apply theme
+  // hydrate theme from localStorage
   useEffect(() => {
     const saved = (typeof window !== "undefined" && localStorage.getItem("theme")) as
       | "light"
@@ -31,134 +40,128 @@ import Link from "next/link";
   };
 
   return (
-    <header className="sticky top-0 z-50 border-b border-black/5 bg-sky-50/70 backdrop-blur dark:border-white/10 dark:bg-slate-900/70">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-3 py-2">
-        {/* LEFT: single hamburger + logo */}
-         <div className="flex items-center gap-2 md:gap-3">
+    <header className="sticky top-0 z-50 border-b border-black/5 bg-[#dbe8fb]/80 backdrop-blur dark:border-white/10 dark:bg-slate-900/70">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-2 md:py-3">
+        {/* Left cluster */}
+        <div className="flex items-center gap-3">
+          {/* Hamburger */}
           <button
             aria-label="Open menu"
             onClick={() => setOpen((v) => !v)}
-            className="inline-flex h-8 w-8 items-center justify-center rounded-md border border-black/10 bg-white/70 hover:bg-white/90 dark:border-white/10 dark:bg-white/5 dark:hover:bg-white/10 md:h-9 md:w-9"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-black/10 bg-white/70 hover:bg-white/90 dark:border-white/10 dark:bg-white/5 dark:hover:bg-white/10"
           >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor">
               <path strokeWidth="2" strokeLinecap="round" d="M4 7h16M4 12h16M4 17h16" />
             </svg>
           </button>
 
-           <Link href="/" className="flex items-center gap-2">
+          {/* Logo + brand */}
+          <Link href="/" className="flex items-center gap-2">
             <Image
-              src="/images/NetDagLogo.png"      // transparent PNG
+              src="/images/NetDagLogo.png" // transparent PNG in public/images
               alt="NetDag"
-              width={26}
-              height={26}
+              width={28}
+              height={28}
               priority
-              className="h-6 w-6 md:h-7 md:w-7 bg-transparent"
+              className="h-7 w-7"
             />
-            <span className="text-sm font-medium tracking-tight text-slate-800 dark:text-slate-100 md:text-[15px]">
+            <span className="text-sm font-medium tracking-tight text-slate-800 dark:text-slate-100">
               NetDag <span className="opacity-60">(NDG)</span>
             </span>
           </Link>
         </div>
 
-        {/* RIGHT: small buttons; theme/lang hidden on mobile (moved into drawer) */}
-        <nav className="flex items-center gap-1.5">
-          {/* Theme + Language on desktop only */}
+        {/* Right cluster */}
+        <nav className="flex items-center gap-2">
+          {/* Theme & Language — hidden on mobile, visible ≥ md */}
           <button
             onClick={toggleTheme}
-            className="hidden rounded-md border border-black/10 px-2.5 py-1 text-xs hover:bg-white/70 dark:border-white/10 dark:hover:bg-white/10 md:inline-flex"
+            className="hidden md:inline-flex rounded-md border border-black/10 px-3 py-2 text-sm hover:bg-white/70 dark:border-white/10 dark:hover:bg-white/10"
             aria-label="Toggle theme"
             title="Toggle day/night"
           >
             {theme === "light" ? "🌙" : "☀️"}
-           </button>
+          </button>
+
           <button
-            className="hidden rounded-md border border-black/10 px-2.5 py-1 text-xs hover:bg-white/70 dark:border-white/10 dark:hover:bg-white/10 md:inline-flex"
+            className="hidden md:inline-flex rounded-md border border-black/10 px-3 py-2 text-sm hover:bg-white/70 dark:border-white/10 dark:hover:bg-white/10"
             aria-label="Change language"
             title="Change language"
           >
             🌐
           </button>
 
-           <Link
+          {/* Login/Register + Buy NDG always visible (smaller on mobile) */}
+          <Link
             href="/#login"
-            className="rounded-md border border-black/10 px-2.5 py-1.5 text-xs hover:bg-white/70 dark:border-white/10 dark:hover:bg-white/10 md:text-sm"
+            className="rounded-md border border-black/10 px-2 py-1 text-xs md:px-3 md:py-2 md:text-sm hover:bg-white/70 dark:border-white/10 dark:hover:bg-white/10"
           >
             Login / Register
           </Link>
 
-           <Link
+          <Link
             href="/#buy-ndg"
-            className="rounded-md bg-[#1E40B8] px-3 py-1.5 text-xs text-white shadow hover:opacity-90 md:text-sm"
+            className="rounded-md bg-[#1E40B8] px-2 py-1 text-xs text-white shadow hover:opacity-90 md:px-3 md:py-2 md:text-sm"
           >
             Buy NDG
           </Link>
 
-          {/* Keep these only on desktop; mobile users get them in the drawer */}
+          {/* Keep these only on desktop (mobile gets them in the drawer) */}
           <Link
-            href="/whitepaper"
-            className="hidden rounded-md border border-black/10 px-3 py-1.5 text-sm hover:bg-white/70 dark:border-white/10 dark:hover:bg-white/10 md:inline-flex"
+            href="/#whitepaper"
+            className="hidden md:inline-flex rounded-md border border-black/10 px-3 py-2 text-sm hover:bg-white/70 dark:border-white/10 dark:hover:bg-white/10"
           >
             Whitepaper
-           </Link>
+          </Link>
+
           <Link
-            href="/vision"
-            className="hidden rounded-md border border-black/10 px-3 py-1.5 text-sm hover:bg-white/70 dark:border-white/10 dark:hover:bg-white/10 md:inline-flex"
+            href="/#vision"
+            className="hidden md:inline-flex rounded-md border border-black/10 px-3 py-2 text-sm hover:bg-white/70 dark:border-white/10 dark:hover:bg-white/10"
           >
             Vision
           </Link>
         </nav>
-       </div>
+      </div>
 
-      {/* DROP-DOWN MENU (under header, not covering the page) */}
+      {/* Drawer (mobile & desktop if opened) */}
       {open && (
-        <div className="absolute inset-x-0 top-full border-b border-black/5 bg-white/95 shadow-lg backdrop-blur dark:border-white/10 dark:bg-slate-900/95">
-          <div className="mx-auto max-w-6xl px-3 py-3 md:px-4">
-            <div className="grid grid-cols-1 gap-1 text-sm sm:grid-cols-2 md:grid-cols-3">
-              {/* Mobile-only controls */}
+        <div className="border-t border-black/5 bg-white/95 backdrop-blur dark:border-white/10 dark:bg-slate-900/95">
+          <div className="mx-auto max-w-6xl px-4 py-3">
+            <div className="grid grid-cols-1 gap-2 text-sm sm:grid-cols-2 md:grid-cols-3">
+              {/* Move Theme + Language into the drawer for mobile use */}
               <button
-                onClick={() => {
-                  toggleTheme();
-                  setOpen(false);
-                }}
-                className="rounded-md px-3 py-2 text-left hover:bg-black/5 dark:hover:bg-white/10"
+                onClick={toggleTheme}
+                className="rounded-md border border-black/10 px-3 py-2 text-left hover:bg-black/5 dark:border-white/10 dark:hover:bg-white/10"
               >
-                {theme === "light" ? "Enable Dark Mode" : "Enable Light Mode"}
+                {theme === "light" ? "🌙 Switch to Dark" : "☀️ Switch to Light"}
               </button>
-              <button className="rounded-md px-3 py-2 text-left hover:bg-black/5 dark:hover:bg-white/10">
-                Language (🌐) — coming soon
+              <button className="rounded-md border border-black/10 px-3 py-2 text-left hover:bg-black/5 dark:border-white/10 dark:hover:bg-white/10">
+                🌐 Language
               </button>
 
-              {/* Navigation items */}
-              <Link href="/whitepaper" onClick={() => setOpen(false)}
-                className="rounded-md px-3 py-2 hover:bg-black/5 dark:hover:bg-white/10">
+              {/* Site links */}
+              <Link href="/#whitepaper" className="rounded-md px-3 py-2 hover:bg-black/5 dark:hover:bg-white/10">
                 Whitepaper
               </Link>
-              <Link href="/vision" onClick={() => setOpen(false)}
-                className="rounded-md px-3 py-2 hover:bg-black/5 dark:hover:bg-white/10">
+              <Link href="/#vision" className="rounded-md px-3 py-2 hover:bg-black/5 dark:hover:bg-white/10">
                 Vision
               </Link>
-              <Link href="/dvpn" onClick={() => setOpen(false)}
-                className="rounded-md px-3 py-2 hover:bg-black/5 dark:hover:bg-white/10">
+              <Link href="/dvpn" className="rounded-md px-3 py-2 hover:bg-black/5 dark:hover:bg-white/10">
                 dVPN
               </Link>
-              <Link href="/faq" onClick={() => setOpen(false)}
-                className="rounded-md px-3 py-2 hover:bg-black/5 dark:hover:bg-white/10">
-                FAQ
-              </Link>
-              <Link href="/#tokenomics" onClick={() => setOpen(false)}
-                className="rounded-md px-3 py-2 hover:bg-black/5 dark:hover:bg-white/10">
+              <Link href="/#tokenomics" className="rounded-md px-3 py-2 hover:bg-black/5 dark:hover:bg-white/10">
                 Tokenomics
               </Link>
-              <Link href="/#get-started" onClick={() => setOpen(false)}
-                className="rounded-md px-3 py-2 hover:bg-black/5 dark:hover:bg-white/10">
+              <Link href="/#get-started" className="rounded-md px-3 py-2 hover:bg-black/5 dark:hover:bg-white/10">
                 Get Started
               </Link>
-              <Link href="/#roadmap" onClick={() => setOpen(false)}
-                className="rounded-md px-3 py-2 hover:bg-black/5 dark:hover:bg-white/10">
+              <Link href="/faq" className="rounded-md px-3 py-2 hover:bg-black/5 dark:hover:bg-white/10">
+                FAQ
+              </Link>
+              <Link href="/#roadmap" className="rounded-md px-3 py-2 hover:bg-black/5 dark:hover:bg-white/10">
                 Roadmap
               </Link>
-              <Link href="/#contact" onClick={() => setOpen(false)}
-                className="rounded-md px-3 py-2 hover:bg-black/5 dark:hover:bg-white/10">
+              <Link href="/#contact" className="rounded-md px-3 py-2 hover:bg-black/5 dark:hover:bg-white/10">
                 Contact
               </Link>
             </div>
@@ -167,4 +170,4 @@ import Link from "next/link";
       )}
     </header>
   );
- }
+}
