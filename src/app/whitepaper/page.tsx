@@ -37,7 +37,7 @@ export default function WhitepaperPage() {
 
       {/* 1. Problem & Philosophy */}
       <section id="problem" className="scroll-mt-24">
-        <h2 className="text-2xl font-semibold text-zinc-900">1. Problem &amp; Philosophy</h2>
+        <h2 className="text-2xl font-semibold text-zinc-900">Problem &amp; Philosophy</h2>
         <p className="mt-3 text-zinc-800">
           The global digital economy has outpaced the financial infrastructure supporting it.
           Legacy systems remain expensive, exclusionary, and opaque, while existing crypto
@@ -53,7 +53,7 @@ export default function WhitepaperPage() {
 
       {/* 2. Core Principles */}
       <section id="principles" className="scroll-mt-24">
-        <h2 className="text-2xl font-semibold text-zinc-900">2. Core Principles</h2>
+        <h2 className="text-2xl font-semibold text-zinc-900">Core Principles</h2>
         <div className="mt-4 space-y-5 text-zinc-800">
           <div>
             <h3 className="font-semibold text-zinc-900">Trust, Scalability, and Real-World Utility</h3>
@@ -100,7 +100,7 @@ export default function WhitepaperPage() {
 
       {/* 3. Tokenomics */}
       <section id="tokenomics" className="scroll-mt-24">
-        <h2 className="text-2xl font-semibold text-zinc-900">3. Tokenomics</h2>
+        <h2 className="text-2xl font-semibold text-zinc-900">Tokenomics</h2>
         <p className="mt-3 text-zinc-800">
           The maximum total supply is <span className="font-medium">499,999,000 NDG</span>,
           allocated to balance fairness, growth, and sustainability.
@@ -142,7 +142,7 @@ export default function WhitepaperPage() {
 
       {/* 4. Focus Areas */}
       <section id="focus" className="scroll-mt-24">
-        <h2 className="text-2xl font-semibold text-zinc-900">4. Focus Areas</h2>
+        <h2 className="text-2xl font-semibold text-zinc-900">Focus Areas</h2>
         <div className="mt-4 space-y-5 text-zinc-800">
           <Item
             title="Financial services & payment solutions"
@@ -179,7 +179,7 @@ export default function WhitepaperPage() {
 
       {/* 5. Risk Management */}
       <section id="risk" className="scroll-mt-24">
-        <h2 className="text-2xl font-semibold text-zinc-900">5. Risk Management</h2>
+        <h2 className="text-2xl font-semibold text-zinc-900">Risk Management</h2>
         <div className="mt-4 grid md:grid-cols-2 gap-4">
           <Card title="Smart Contract Audits">
             Independent third-party reviews before and after deployment to minimize vulnerabilities.
@@ -203,7 +203,7 @@ export default function WhitepaperPage() {
 
       {/* 6. Roadmap */}
       <section id="roadmap" className="scroll-mt-24">
-        <h2 className="text-2xl font-semibold text-zinc-900">6. Roadmap &amp; Milestones</h2>
+        <h2 className="text-2xl font-semibold text-zinc-900">Roadmap &amp; Milestones</h2>
         <p className="mt-3 text-zinc-800">
           The project began with a mission to merge trust, utility, and scalability in a single
           decentralized framework. Early phases focused on foundation, prototyping, and community.
@@ -221,7 +221,7 @@ export default function WhitepaperPage() {
 
       {/* 7. Governance */}
       <section id="governance" className="scroll-mt-24">
-        <h2 className="text-2xl font-semibold text-zinc-900">7. Governance &amp; Transparency</h2>
+        <h2 className="text-2xl font-semibold text-zinc-900">Governance &amp; Transparency</h2>
         <p className="mt-3 text-zinc-800">
           NetDag uses transparent, on-chain governance. Holders can propose and vote on upgrades,
           treasury allocations, and integrations. All outcomes are immutably recorded, while multisig
@@ -233,7 +233,7 @@ export default function WhitepaperPage() {
 
       {/* 8. Charity */}
       <section id="charity" className="scroll-mt-24">
-        <h2 className="text-2xl font-semibold text-zinc-900">8. Charity &amp; Global Impact</h2>
+        <h2 className="text-2xl font-semibold text-zinc-900">Charity &amp; Global Impact</h2>
         <p className="mt-3 text-zinc-800">
           A portion of network activity funds verified charities and humanitarian causes. Donations
           are on-chain and traceable, aligning economic participation with measurable global impact.
