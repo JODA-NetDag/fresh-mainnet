@@ -108,8 +108,16 @@ export default function Navbar() {
 
           {/* Keep these only on desktop (mobile gets them in the drawer) */}
           <Link
-  href="/whitepaper"
+  href="/#whitepaper"
   className="hidden md:inline-flex rounded-md border border-black/10 px-3 py-2 text-sm hover:bg-white/70 dark:border-white/10 dark:hover:bg-white/10"
+>
+  Whitepaper
+</Link>
+…
+{/* Drawer item */}
+<Link
+  href="/#whitepaper"
+  className="rounded-md px-3 py-2 hover:bg-black/5 dark:hover:bg-white/10"
 >
   Whitepaper
 </Link>
